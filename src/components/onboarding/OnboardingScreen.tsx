@@ -29,7 +29,8 @@ const DialogContentWithoutCloseButton = React.forwardRef<
         "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg",
         className
       )}
-      {...props}>
+      {...props}
+    >
       {children}
       {/* Close button removed */}
     </DialogPrimitive.Content>
@@ -50,18 +51,18 @@ export function OnboardingScreen({
 
   const steps = [
     {
-      title: "Welcome to Fleur",
-      description: "Start by dragging the Fleur app to Claude",
+      title: "Välkommen till Staten.ai",
+      description: "Börja med att dra Staten.ai-appen till Claude",
     },
     {
-      title: "Fantastic!",
+      title: "Toppen!",
       description: isClaudeInstalled
-        ? `Next, open Claude and write "Hello Fleur"`
-        : "Next, download and install Claude",
+        ? `För att gå vidare, öppna Claude Desktop och skriv "Hej Staten"`
+        : "För att gå vidare, ladda ner och installera Claude Desktop",
     },
     {
-      title: "Done!",
-      description: "You're all set. Enjoy using Fleur!",
+      title: "Klart!",
+      description: "Nu är vi klara. Dags att utforska!",
     },
   ];
 
@@ -127,10 +128,10 @@ export function OnboardingScreen({
 
     invoke("install_fleur_mcp", { client: currentClient })
       .then(() => {
-        console.log("Successfully installed fleur-mcp");
+        console.log("Successfully installed staten-mcp");
       })
       .catch((error) => {
-        console.error("Failed to install fleur-mcp:", error);
+        console.error("Failed to install staten-mcp:", error);
       });
   };
 
@@ -174,28 +175,10 @@ export function OnboardingScreen({
                 <BlurFade direction="down" delay={0.5}>
                   <img
                     className="relative"
-                    src="/icons/red-flower.svg"
-                    alt="Fleur"
-                    width={30}
-                    height={30}
-                  />
-                </BlurFade>
-                <BlurFade direction="right" delay={1}>
-                  <img
-                    className="relative right-[18px] bottom-[8px]"
-                    src="/icons/yellow-flower.svg"
-                    alt="Fleur"
-                    width={30}
-                    height={30}
-                  />
-                </BlurFade>
-                <BlurFade direction="left" delay={1.5}>
-                  <img
-                    className="relative bottom-[30px] left-[17px]"
-                    src="/icons/green-flower.svg"
-                    alt="Fleur"
-                    width={26}
-                    height={26}
+                    src="/icons/dammsugare.png"
+                    alt="Staten.ai"
+                    width={80}
+                    height={80}
                   />
                 </BlurFade>
               </div>
@@ -205,7 +188,8 @@ export function OnboardingScreen({
                 <TextAnimate
                   delay={currentStep === 0 ? 2 : 0}
                   animation="blurInUp"
-                  by="character">
+                  by="character"
+                >
                   {steps[currentStep].title}
                 </TextAnimate>
               </p>
@@ -213,7 +197,8 @@ export function OnboardingScreen({
                 <TextAnimate
                   delay={currentStep === 0 ? 2.5 : 0.5}
                   animation="blurInUp"
-                  by="character">
+                  by="character"
+                >
                   {steps[currentStep].description}
                 </TextAnimate>
               </p>
@@ -232,8 +217,9 @@ export function OnboardingScreen({
                           : handleDownloadClaude
                       }
                       variant="secondary"
-                      className="w-full bg-sand-200 dark:bg-sand-800 border border-sand-200 dark:border-sand-800 hover:bg-sand-100 dark:hover:bg-sand-800 text-sand-800 dark:text-sand-100">
-                      {isClaudeInstalled ? "Open Claude" : "Download Claude"}
+                      className="w-full bg-sand-200 dark:bg-sand-800 border border-sand-200 dark:border-sand-800 hover:bg-sand-100 dark:hover:bg-sand-800 text-sand-800 dark:text-sand-100"
+                    >
+                      {isClaudeInstalled ? "Öppna Claude" : "Hämta Claude"}
                     </Button>
                   </div>
                 </BlurFade>
@@ -244,7 +230,8 @@ export function OnboardingScreen({
                     <Button
                       onClick={handleAddMoreApps}
                       variant="secondary"
-                      className="w-full bg-sand-200 dark:bg-sand-800 border border-sand-200 hover:bg-sand-100 text-sand-800 dark:border-sand-800 dark:text-sand-100 dark:hover:bg-sand-800 ">
+                      className="w-full bg-sand-200 dark:bg-sand-800 border border-sand-200 hover:bg-sand-100 text-sand-800 dark:border-sand-800 dark:text-sand-100 dark:hover:bg-sand-800 "
+                    >
                       Add more apps
                     </Button>
                   </div>

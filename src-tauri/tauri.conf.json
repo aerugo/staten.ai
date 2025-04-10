@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "Fleur",
+  "productName": "Staten",
   "version": "0.2.18",
-  "identifier": "com.fleur.app",
+  "identifier": "com.staten.app",
   "build": {
     "beforeDevCommand": "bun run dev",
     "devUrl": "http://localhost:1420",

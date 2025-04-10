@@ -14,14 +14,14 @@ GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
 NC='\033[0m'
 
-echo -e "${GREEN}Fleur DMG Creation and Notarization Script${NC}"
-echo "This script will create, sign, and notarize a DMG for your signed Fleur app"
+echo -e "${GREEN}Staten DMG Creation and Notarization Script${NC}"
+echo "This script will create, sign, and notarize a DMG for your signed Staten app"
 echo "------------------------------------------------------------"
 
 # Check if APP_BUNDLE_PATH is provided
 if [ -z "$1" ]; then
-  echo -e "${RED}Error: Please provide the path to your signed Fleur.app bundle${NC}"
-  echo "Usage: $0 path/to/your/signed/Fleur.app [output_dmg_path]"
+  echo -e "${RED}Error: Please provide the path to your signed Staten.app bundle${NC}"
+  echo "Usage: $0 path/to/your/signed/Staten.app [output_dmg_path]"
   exit 1
 fi
 
@@ -37,7 +37,7 @@ fi
 # Set default DMG path if not provided
 if [ -z "$OUTPUT_DMG_PATH" ]; then
   APP_VERSION=$(defaults read "$APP_BUNDLE_PATH/Contents/Info.plist" CFBundleShortVersionString 2>/dev/null || echo "0.0.0")
-  OUTPUT_DMG_PATH="./Fleur_${APP_VERSION}_signed.dmg"
+  OUTPUT_DMG_PATH="./Staten_${APP_VERSION}_signed.dmg"
   echo -e "${YELLOW}No output DMG path provided. Using default: $OUTPUT_DMG_PATH${NC}"
 fi
 
@@ -78,7 +78,7 @@ ln -s /Applications "$TEMP_DIR/Applications"
 
 # Create the DMG
 echo -e "${GREEN}Creating DMG...${NC}"
-hdiutil create -volname "Fleur" -srcfolder "$TEMP_DIR" -ov -format UDZO "$OUTPUT_DMG_PATH"
+hdiutil create -volname "Staten" -srcfolder "$TEMP_DIR" -ov -format UDZO "$OUTPUT_DMG_PATH"
 
 # Clean up temporary directory
 echo -e "${GREEN}Cleaning up temporary directory...${NC}"

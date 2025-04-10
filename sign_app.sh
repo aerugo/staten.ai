@@ -14,8 +14,8 @@ GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
 NC='\033[0m'
 
-echo -e "${GREEN}Fleur App Signing Script${NC}"
-echo "This script will properly sign your Fleur app for notarization"
+echo -e "${GREEN}Staten App Signing Script${NC}"
+echo "This script will properly sign your Staten app for notarization"
 echo "------------------------------------------------------------"
 
 # Display the current signing identity
@@ -30,8 +30,8 @@ echo -e "Update your .env file with the exact identity string or continue with t
 
 # Check if APP_BUNDLE_PATH is provided
 if [ -z "$1" ]; then
-  echo -e "${RED}Error: Please provide the path to your Fleur.app bundle${NC}"
-  echo "Usage: $0 path/to/your/Fleur.app"
+  echo -e "${RED}Error: Please provide the path to your Staten.app bundle${NC}"
+  echo "Usage: $0 path/to/your/Staten.app"
   exit 1
 fi
 
@@ -105,16 +105,16 @@ find "$APP_BUNDLE_PATH" -type d -name "*.framework" | while read -r framework; d
 done
 
 # Sign the main executable with hardened runtime
-echo -e "${GREEN}Signing Fleur.app main executable with hardened runtime...${NC}"
+echo -e "${GREEN}Signing Staten.app main executable with hardened runtime...${NC}"
 codesign --force --options runtime --timestamp --sign "$APPLE_SIGNING_IDENTITY" \
-  --entitlements "$ENTITLEMENTS_PATH" "$APP_BUNDLE_PATH/Contents/MacOS/fleur"
+  --entitlements "$ENTITLEMENTS_PATH" "$APP_BUNDLE_PATH/Contents/MacOS/staten"
 
 # Verify the main executable signature
 echo -e "${GREEN}Verifying main executable signature...${NC}"
-codesign --verify --verbose "$APP_BUNDLE_PATH/Contents/MacOS/fleur"
+codesign --verify --verbose "$APP_BUNDLE_PATH/Contents/MacOS/staten"
 
 # Sign the entire app bundle
-echo -e "${GREEN}Signing complete Fleur.app with hardened runtime...${NC}"
+echo -e "${GREEN}Signing complete Staten.app with hardened runtime...${NC}"
 codesign --force --deep --options runtime --timestamp --sign "$APPLE_SIGNING_IDENTITY" \
   --entitlements "$ENTITLEMENTS_PATH" "$APP_BUNDLE_PATH"
 

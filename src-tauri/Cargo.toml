@@ -1,5 +1,5 @@
 [package]
-name = "fleur"
+name = "staten"
 version = "0.2.18"
 description = "A GUI to manage your MCPs"
 authors = ["you"]
@@ -38,7 +38,7 @@ winapi = { version = "0.3", features = ["winuser"] }
 tempfile = "3.8"
 uuid = { version = "1.4", features = ["v4"] }
 serial_test = "2.0"
-fleur = { path = ".", features = ["test-utils"] }
+staten = { path = ".", features = ["test-utils"] }
 env_logger = "0.10"
 
 [features]

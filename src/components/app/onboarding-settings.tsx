@@ -1,12 +1,12 @@
-import { toast } from 'sonner';
-import { useEffect, useState } from 'react';
-import { invoke } from '@tauri-apps/api/core';
-import { useStore } from '@tanstack/react-store';
-import { appStore } from '@/store/app';
-import { resetOnboardingStatus } from '@/lib/onboarding';
-import { Switch } from '@/components/ui/switch';
-import { Separator } from '@/components/ui/separator';
-import { Button } from '@/components/ui/button';
+import { toast } from "sonner";
+import { useEffect, useState } from "react";
+import { invoke } from "@tauri-apps/api/core";
+import { useStore } from "@tanstack/react-store";
+import { appStore } from "@/store/app";
+import { resetOnboardingStatus } from "@/lib/onboarding";
+import { Switch } from "@/components/ui/switch";
+import { Separator } from "@/components/ui/separator";
+import { Button } from "@/components/ui/button";
 
 export function OnboardingSettings() {
   const [isFleurEnabled, setIsFleurEnabled] = useState(false);
@@ -36,19 +36,19 @@ export function OnboardingSettings() {
     try {
       if (enabled) {
         await invoke("install_fleur_mcp", { client: currentClient });
-        toast.success("Fleur onboarding enabled");
+        toast.success("Staten onboarding enabled");
       } else {
         await invoke("uninstall_fleur_mcp", { client: currentClient });
-        toast.success("Fleur onboarding disabled");
+        toast.success("Staten onboarding disabled");
       }
       setIsFleurEnabled(enabled);
     } catch (error) {
       console.error(
-        `Failed to ${enabled ? "install" : "uninstall"} Fleur MCP:`,
+        `Failed to ${enabled ? "install" : "uninstall"} Staten MCP:`,
         error
       );
       toast.error(
-        `Failed to ${enabled ? "enable" : "disable"} Fleur onboarding`,
+        `Failed to ${enabled ? "enable" : "disable"} Staten onboarding`,
         {
           description: String(error),
         }
@@ -81,7 +81,7 @@ export function OnboardingSettings() {
         <div className="flex flex-col gap-1">
           <label className="text-sm font-medium">Onboarding</label>
           <p className="text-sm text-muted-foreground">
-            Enable Fleur onboarding in Claude
+            Enable Staten.ai onboarding in Claude
           </p>
         </div>
         <Switch
@@ -98,9 +98,9 @@ export function OnboardingSettings() {
             Reset the onboarding process to start over
           </p>
         </div>
-        <Button 
-          size="sm" 
-          variant="outline" 
+        <Button
+          size="sm"
+          variant="outline"
           onClick={resetOnboarding}
           disabled={isResetting}
         >
@@ -109,4 +109,4 @@ export function OnboardingSettings() {
       </div>
     </div>
   );
-} 
+}

@@ -4,40 +4,44 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fleur</title>
+    <title>Staten.ai</title>
     <script>
       window.analytics = {};
-      
-      const telemetryDisabled = localStorage.getItem('telemetry-disabled') === 'true';
-      
+
+      const telemetryDisabled =
+        localStorage.getItem("telemetry-disabled") === "true";
+
       function juneify(writeKey) {
         window.analytics._writeKey = writeKey;
-        
+
         if (telemetryDisabled) {
-          window.analytics.user = function() {
+          window.analytics.user = function () {
             return {
-              anonymousId: function() { return null; }
+              anonymousId: function () {
+                return null;
+              },
             };
           };
         }
-        
-        var script = document.createElement('script');
-        script.type = 'application/javascript';
+
+        var script = document.createElement("script");
+        script.type = "application/javascript";
         script.onload = function () {
           if (telemetryDisabled) {
-            window.analytics.track = function() {};
-            window.analytics.page = function() {};
-            window.analytics.identify = function() {};
-            window.analytics.group = function() {};
+            window.analytics.track = function () {};
+            window.analytics.page = function () {};
+            window.analytics.identify = function () {};
+            window.analytics.group = function () {};
           } else {
             window.analytics.page();
           }
         };
-        script.src = 'https://unpkg.com/@june-so/analytics-next/dist/umd/standalone.js';
-        var first = document.getElementsByTagName('script')[0];
+        script.src =
+          "https://unpkg.com/@june-so/analytics-next/dist/umd/standalone.js";
+        var first = document.getElementsByTagName("script")[0];
         first.parentNode.insertBefore(script, first);
       }
-      juneify('wk-c38bb8c309e14cf3a41cf082c9c991ed');
+      juneify("wk-c38bb8c309e14cf3a41cf082c9c991ed");
     </script>
   </head>
 

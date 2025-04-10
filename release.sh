@@ -81,11 +81,11 @@ bun run build
 # Build Tauri app
 echo "Building Tauri app..."
 cd src-tauri
-TAURI_SIGNING_PRIVATE_KEY=~/.tauri/fleur.key cargo tauri build --target universal-apple-darwin
+TAURI_SIGNING_PRIVATE_KEY=~/.tauri/staten.key cargo tauri build --target universal-apple-darwin
 
 # Generate latest.json
 echo "Generating latest.json..."
-SIGNATURE=$(cat target/universal-apple-darwin/release/bundle/macos/Fleur.app.tar.gz.sig)
+SIGNATURE=$(cat target/universal-apple-darwin/release/bundle/macos/Staten.app.tar.gz.sig)
 cat > latest.json << EOL
 {
     "version": "${VERSION#v}",
@@ -94,14 +94,14 @@ cat > latest.json << EOL
     "platforms": {
         "darwin-aarch64": {
             "signature": "$SIGNATURE",
-            "url": "https://github.com/fleuristes/fleur/releases/download/$VERSION/Fleur.app.tar.gz"
+            "url": "https://github.com/aerugo/staten.ai/releases/download/$VERSION/Staten.app.tar.gz"
         }
     }
 }
 EOL
 
 # Define paths
-APP_BUNDLE_PATH="target/universal-apple-darwin/release/bundle/macos/Fleur.app"
+APP_BUNDLE_PATH="target/universal-apple-darwin/release/bundle/macos/Staten.app"
 
 # Check if .env file exists for signing credentials
 if [ -f "../.env" ]; then
@@ -121,7 +121,7 @@ if [ -n "$APPLE_SIGNING_IDENTITY" ] && [ -n "$APPLE_TEAM_ID" ]; then
   ./sign_app.sh "src-tauri/$APP_BUNDLE_PATH"
 
   echo "Creating, signing, and notarizing the DMG using create_signed_dmg.sh..."
-  ./create_signed_dmg.sh "src-tauri/$APP_BUNDLE_PATH" "src-tauri/target/universal-apple-darwin/release/bundle/dmg/Fleur_${VERSION#v}_universal_signed.dmg"
+  ./create_signed_dmg.sh "src-tauri/$APP_BUNDLE_PATH" "src-tauri/target/universal-apple-darwin/release/bundle/dmg/Staten_${VERSION#v}_universal_signed.dmg"
 
   cd src-tauri
 else
@@ -151,6 +151,6 @@ git commit -am "Bump version to $VERSION"
 git tag $VERSION
 git push && git push --tags
 
-cp src-tauri/target/universal-apple-darwin/release/bundle/dmg/Fleur_${VERSION#v}_universal_signed.dmg src-tauri/target/universal-apple-darwin/release/bundle/dmg/Fleur.dmg
+cp src-tauri/target/universal-apple-darwin/release/bundle/dmg/Staten_${VERSION#v}_universal_signed.dmg src-tauri/target/universal-apple-darwin/release/bundle/dmg/Staten.dmg
 
-gh release create $VERSION --title "Fleur $VERSION" src-tauri/latest.json src-tauri/target/universal-apple-darwin/release/bundle/dmg/Fleur.dmg src-tauri/target/universal-apple-darwin/release/bundle/macos/Fleur.app.tar.gz
+gh release create $VERSION --title "Staten $VERSION" src-tauri/latest.json src-tauri/target/universal-apple-darwin/release/bundle/dmg/Staten.dmg src-tauri/target/universal-apple-darwin/release/bundle/macos/Staten.app.tar.gz

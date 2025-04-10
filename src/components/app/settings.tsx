@@ -105,7 +105,7 @@ export function Settings() {
 
   const handleOpenRegistry = async () => {
     await openUrl(
-      "https://github.com/fleuristes/app-registry?tab=readme-ov-file#contributing-your-mcp"
+      "https://github.com/aerugo/staten.ai-app-registry?tab=readme-ov-file#contributing-your-mcp"
     );
   };
 
@@ -138,7 +138,7 @@ export function Settings() {
             <div className="flex flex-col gap-1">
               <label className="text-sm font-medium">Apps</label>
               <p className="text-sm text-muted-foreground">
-                Manage the apps listed in Fleur
+                Manage the apps listed in Staten.ai
               </p>
             </div>
             <div className="flex gap-2">
@@ -146,7 +146,8 @@ export function Settings() {
                 size="sm"
                 variant="outline"
                 onClick={handleRefreshApps}
-                disabled={isRefreshing}>
+                disabled={isRefreshing}
+              >
                 {isRefreshing ? "Updating..." : "Update"}
               </Button>
               <Button size="sm" variant="outline" onClick={handleOpenRegistry}>
@@ -176,19 +177,22 @@ export function Settings() {
                 <DropdownMenuItem
                   onClick={() => {
                     void updateTheme("light");
-                  }}>
+                  }}
+                >
                   Light
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   onClick={() => {
                     void updateTheme("dark");
-                  }}>
+                  }}
+                >
                   Dark
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   onClick={() => {
                     void updateTheme("system");
-                  }}>
+                  }}
+                >
                   System
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -213,7 +217,9 @@ export function Settings() {
           <div className="flex items-center justify-between">
             <div className="flex flex-col gap-1">
               <label className="text-sm font-medium">Logs</label>
-              <p className="text-sm text-muted-foreground">Access Fleur logs</p>
+              <p className="text-sm text-muted-foreground">
+                Access Staten.ai logs
+              </p>
             </div>
             <Button size="sm" variant="outline" onClick={handleOpenLogsFolder}>
               Open Logs
@@ -224,7 +230,7 @@ export function Settings() {
             <div className="flex flex-col gap-1">
               <label className="text-sm font-medium">Version</label>
               <p className="text-sm text-muted-foreground">
-                Current Fleur version
+                Current Staten.ai version
               </p>
             </div>
             <div className="flex gap-2 items-center">

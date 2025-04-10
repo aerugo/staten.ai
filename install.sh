@@ -73,14 +73,14 @@ display_banner() {
 
 # Function to check and handle existing installation
 check_existing_installation() {
-    if [[ -d "/Applications/Fleur.app" ]]; then
-        print_warning "Fleur is already installed on this system."
+    if [[ -d "/Applications/Staten.app" ]]; then
+        print_warning "Staten is already installed on this system."
         read -p "$(echo -e $YELLOW"Do you want to remove the existing installation before continuing? (y/n): "$RESET)" choice
         case "$choice" in
             y|Y)
                 print_step "Removing existing installation"
                 ensure_sudo
-                sudo rm -rf "/Applications/Fleur.app"
+                sudo rm -rf "/Applications/Staten.app"
                 print_success "Previous installation removed successfully!"
                 ;;
             n|N)
@@ -126,7 +126,7 @@ spinner() {
 
 # Function to get the latest release version from GitHub
 get_latest_version() {
-    local latest_version=$(curl -s https://api.github.com/repos/fleuristes/fleur/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
+    local latest_version=$(curl -s https://api.github.com/repos/aerugo/staten.ai/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
     if [[ -z "$latest_version" ]]; then
         print_error "Failed to fetch the latest version from GitHub."
         exit 1
@@ -141,54 +141,54 @@ main() {
 
     # Display banner
     display_banner
-    print_message "Welcome to the Fleur installer $VERSION!"
+    print_message "Welcome to the Staten installer $VERSION!"
     # Trap for cleanup
     trap cleanup EXIT INT TERM
     # System compatibility check
     if [[ "$(uname)" != "Darwin" ]]; then
-        print_error "Fleur is currently only compatible with macOS."
+        print_error "Staten is currently only compatible with macOS."
         print_error "This installation script does not support Linux or Windows yet."
         exit 1
     fi
     # Check for existing installation
     check_existing_installation
     # Create a directory for downloads
-    BUILD_DIR="$HOME/.fleur-build-$(date +%s)"
+    BUILD_DIR="$HOME/.staten-build-$(date +%s)"
     mkdir -p "$BUILD_DIR"
     print_message "Using build directory: ${YELLOW}$BUILD_DIR${RESET}"
     # Download pre-built application
-    APP_URL="https://github.com/fleuristes/fleur/releases/download/$VERSION/Fleur.app.tar.gz"
-    print_message "Downloading Fleur from: ${YELLOW}$APP_URL${RESET}"
+    APP_URL="https://github.com/aerugo/staten.ai/releases/download/$VERSION/Staten.app.tar.gz"
+    print_message "Downloading Staten from: ${YELLOW}$APP_URL${RESET}"
     echo -e "${YELLOW}${BOLD}Downloading...${RESET}"
-    download_with_progress "$APP_URL" "$BUILD_DIR/Fleur.app.tar.gz"
-    verify_download "$BUILD_DIR/Fleur.app.tar.gz"
+    download_with_progress "$APP_URL" "$BUILD_DIR/Staten.app.tar.gz"
+    verify_download "$BUILD_DIR/Staten.app.tar.gz"
     # Extract the application
     print_message "Extracting files..."
-    tar -xzf "$BUILD_DIR/Fleur.app.tar.gz" -C "$BUILD_DIR" &
+    tar -xzf "$BUILD_DIR/Staten.app.tar.gz" -C "$BUILD_DIR" &
     extraction_pid=$!
     spinner $extraction_pid
     wait $extraction_pid
     # Verify extraction
-    if [[ ! -d "$BUILD_DIR/Fleur.app" ]]; then
-        print_error "Extraction failed. Fleur.app not found in the build directory."
+    if [[ ! -d "$BUILD_DIR/Staten.app" ]]; then
+        print_error "Extraction failed. Staten.app not found in the build directory."
         exit 1
     fi
     # Remove quarantine attribute
-    xattr -rd com.apple.quarantine "$BUILD_DIR/Fleur.app" 2>/dev/null || true
+    xattr -rd com.apple.quarantine "$BUILD_DIR/Staten.app" 2>/dev/null || true
     # Copy to Applications
-    print_message "Installing Fleur..."
-    cp -R "$BUILD_DIR/Fleur.app" /Applications/
+    print_message "Installing Staten..."
+    cp -R "$BUILD_DIR/Staten.app" /Applications/
     # Set permissions
-    chmod -R 755 "/Applications/Fleur.app"
-    chown -R $(whoami) "/Applications/Fleur.app"
+    chmod -R 755 "/Applications/Staten.app"
+    chown -R $(whoami) "/Applications/Staten.app"
     # Create application icon cache
-    touch "/Applications/Fleur.app"
+    touch "/Applications/Staten.app"
     killall Finder &>/dev/null || true
     # Display completion message with animation
     echo -e "${GREEN}${BOLD}"
     echo "Installation complete! ✨🍰✨"
     echo -e "${RESET}"
-    open "/Applications/Fleur.app"
+    open "/Applications/Staten.app"
 }
 
 # Run the main installation process

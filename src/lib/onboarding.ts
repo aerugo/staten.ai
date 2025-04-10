@@ -1,5 +1,5 @@
 // Key used for storing onboarding state in local storage
-const ONBOARDING_COMPLETED_KEY = 'fleur-onboarding-completed';
+const ONBOARDING_COMPLETED_KEY = "fleur-onboarding-completed";
 
 /**
  * Check if the onboarding has been completed
@@ -7,10 +7,10 @@ const ONBOARDING_COMPLETED_KEY = 'fleur-onboarding-completed';
  */
 export function isOnboardingCompleted(): boolean {
   try {
-    return localStorage.getItem(ONBOARDING_COMPLETED_KEY) === 'true';
+    return localStorage.getItem(ONBOARDING_COMPLETED_KEY) === "true";
   } catch (error) {
     // In case of any errors (e.g., localStorage not available), default to false
-    console.error('Error checking onboarding status:', error);
+    console.error("Error checking onboarding status:", error);
     return false;
   }
 }
@@ -20,9 +20,9 @@ export function isOnboardingCompleted(): boolean {
  */
 export function markOnboardingCompleted(): void {
   try {
-    localStorage.setItem(ONBOARDING_COMPLETED_KEY, 'true');
+    localStorage.setItem(ONBOARDING_COMPLETED_KEY, "true");
   } catch (error) {
-    console.error('Error saving onboarding status:', error);
+    console.error("Error saving onboarding status:", error);
   }
 }
 
@@ -33,6 +33,6 @@ export function resetOnboardingStatus(): void {
   try {
     localStorage.removeItem(ONBOARDING_COMPLETED_KEY);
   } catch (error) {
-    console.error('Error resetting onboarding status:', error);
+    console.error("Error resetting onboarding status:", error);
   }
-} 
+}
