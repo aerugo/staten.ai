@@ -244,7 +244,7 @@ export function AppInstallButton({
         onClick={handleGetClick}
         variant="ghost"
       >
-        {!isConfigured ? "Kommer snart" : isInstalled ? "Ta bort" : "Hämta"}
+        {!isConfigured ? "Kommer snart" : isInstalled ? "Ta bort" : "Lägg till"}
       </Button>
     </div>
   );

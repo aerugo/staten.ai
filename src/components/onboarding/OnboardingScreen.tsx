@@ -232,7 +232,7 @@ export function OnboardingScreen({
                       variant="secondary"
                       className="w-full bg-sand-200 dark:bg-sand-800 border border-sand-200 hover:bg-sand-100 text-sand-800 dark:border-sand-800 dark:text-sand-100 dark:hover:bg-sand-800 "
                     >
-                      Add more apps
+                      Lägg till fler appar
                     </Button>
                   </div>
                 </BlurFade>

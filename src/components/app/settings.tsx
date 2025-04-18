@@ -6,7 +6,6 @@ import { invoke } from "@tauri-apps/api/core";
 import { getVersion } from "@tauri-apps/api/app";
 import { refreshApps } from "@/store/app";
 import { updateTauriTheme } from "@/lib/update-tauri-theme";
-import { Switch } from "@/components/ui/switch";
 import { Separator } from "@/components/ui/separator";
 import {
   DropdownMenu,
@@ -42,8 +41,8 @@ export function Settings() {
     try {
       await invoke("open_logs_folder");
     } catch (error) {
-      console.error("Failed to open logs folder:", error);
-      toast.error("Failed to open logs folder", {
+      console.error("Kunde inte öppna loggmappen:", error);
+      toast.error("Kunde inte öppna loggmappen", {
         description: String(error),
       });
     }
@@ -77,14 +76,14 @@ export function Settings() {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Settings</DialogTitle>
+          <DialogTitle>Inställningar</DialogTitle>
         </DialogHeader>
         <div className="flex flex-col gap-4">
           <div className="flex items-center justify-between">
             <div className="flex flex-col gap-1">
               <label className="text-sm font-medium">Apps</label>
               <p className="text-sm text-muted-foreground">
-                Manage the apps listed in Staten.ai
+                Hantera appbiblioteket
               </p>
             </div>
             <div className="flex gap-2">
@@ -94,10 +93,10 @@ export function Settings() {
                 onClick={handleRefreshApps}
                 disabled={isRefreshing}
               >
-                {isRefreshing ? "Updating..." : "Update"}
+                {isRefreshing ? "Uppdaterar..." : "Uppdatera"}
               </Button>
               <Button size="sm" variant="outline" onClick={handleOpenRegistry}>
-                Add
+                Lägg till app
               </Button>
             </div>
           </div>
@@ -105,9 +104,7 @@ export function Settings() {
           <div className="flex items-center justify-between">
             <div className="flex flex-col gap-1">
               <label className="text-sm font-medium">Theme</label>
-              <p className="text-sm text-muted-foreground">
-                Customize your interface color scheme
-              </p>
+              <p className="text-sm text-muted-foreground">Ändra appens tema</p>
             </div>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -115,8 +112,8 @@ export function Settings() {
                   {theme === "system"
                     ? "System"
                     : theme === "dark"
-                      ? "Dark"
-                      : "Light"}
+                      ? "Mörkt"
+                      : "Ljust"}
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
@@ -125,14 +122,14 @@ export function Settings() {
                     void updateTheme("light");
                   }}
                 >
-                  Light
+                  Ljust
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   onClick={() => {
                     void updateTheme("dark");
                   }}
                 >
-                  Dark
+                  Mörkt
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   onClick={() => {
@@ -151,11 +148,11 @@ export function Settings() {
             <div className="flex flex-col gap-1">
               <label className="text-sm font-medium">Logs</label>
               <p className="text-sm text-muted-foreground">
-                Access Staten.ai logs
+                Öppna Statens loggmapp
               </p>
             </div>
             <Button size="sm" variant="outline" onClick={handleOpenLogsFolder}>
-              Open Logs
+              Öppna loggmapp
             </Button>
           </div>
           <Separator />
@@ -163,7 +160,7 @@ export function Settings() {
             <div className="flex flex-col gap-1">
               <label className="text-sm font-medium">Version</label>
               <p className="text-sm text-muted-foreground">
-                Current Staten.ai version
+                Version av Staten.ai
               </p>
             </div>
             <div className="flex gap-2 items-center">

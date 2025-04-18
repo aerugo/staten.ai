@@ -27,7 +27,7 @@ export function OnboardingSettings() {
       );
       setIsStatenEnabled(!!statuses.installed.staten);
     } catch (error) {
-      console.error("Failed to check Staten status:", error);
+      console.error("Misslyckades med att hämta Staten-status:", error);
     }
   };
 
@@ -36,19 +36,23 @@ export function OnboardingSettings() {
     try {
       if (enabled) {
         await invoke("install_staten_mcp", { client: currentClient });
-        toast.success("Staten onboarding enabled");
+        toast.success("Aktiverade Staten onboarding");
       } else {
         await invoke("uninstall_staten_mcp", { client: currentClient });
-        toast.success("Staten onboarding disabled");
+        toast.success("Avaktiverade Staten onboarding");
       }
       setIsStatenEnabled(enabled);
     } catch (error) {
       console.error(
-        `Failed to ${enabled ? "install" : "uninstall"} Staten MCP:`,
+        `Misslyckades med att ${
+          enabled ? "aktivera" : "avaktivera"
+        } Staten onboarding:`,
         error
       );
       toast.error(
-        `Failed to ${enabled ? "enable" : "disable"} Staten onboarding`,
+        `Misslyckades med att ${
+          enabled ? "aktivera" : "avaktivera"
+        } Staten onboarding`,
         {
           description: String(error),
         }
@@ -63,11 +67,11 @@ export function OnboardingSettings() {
     try {
       resetOnboardingStatus();
       await invoke("reset_onboarding_completed");
-      toast.success("Onboarding has been reset");
+      toast.success("Onboarding återställd");
       window.location.reload();
     } catch (error) {
-      console.error("Failed to reset onboarding:", error);
-      toast.error("Failed to reset onboarding", {
+      console.error("Misslyckades med att återställa onboarding:", error);
+      toast.error("Misslyckades med att återställa onboarding", {
         description: String(error),
       });
     } finally {
@@ -81,7 +85,7 @@ export function OnboardingSettings() {
         <div className="flex flex-col gap-1">
           <label className="text-sm font-medium">Onboarding</label>
           <p className="text-sm text-muted-foreground">
-            Enable Staten.ai onboarding in Claude
+            Aktivera onboarding för Staten AI i Claude
           </p>
         </div>
         <Switch
@@ -93,9 +97,9 @@ export function OnboardingSettings() {
       <Separator />
       <div className="flex items-center justify-between">
         <div className="flex flex-col gap-1">
-          <label className="text-sm font-medium">Reset Onboarding</label>
+          <label className="text-sm font-medium">Återställ onboarding</label>
           <p className="text-sm text-muted-foreground">
-            Reset the onboarding process to start over
+            Börja om onboarding-processen för Staten AI i Claude
           </p>
         </div>
         <Button
@@ -104,7 +108,7 @@ export function OnboardingSettings() {
           onClick={resetOnboarding}
           disabled={isResetting}
         >
-          {isResetting ? "Resetting..." : "Reset"}
+          {isResetting ? "Återställer..." : "Återställ"}
         </Button>
       </div>
     </div>
