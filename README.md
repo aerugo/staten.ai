@@ -1,124 +1,131 @@
-<div align="center">
-  <h1>Staten</h1>
-  <p>A desktop app marketplace for Claude Desktop</p>
-</div>
+# Staten.ai
 
-<div align="center">
+En öppen marknadsplats för Model Context Protocol (MCP)-appar – med fokus på svenska öppna data från offentlig sektor och civilsamhälle.
 
-[![License](https://img.shields.io/github/license/statenistes/staten?style=flat)](https://github.com/statenistes/staten/blob/main/LICENSE)
+[Ladda ned senaste macOS-versionen ⇩](https://github.com/aerugo/staten/releases/latest/download/Staten.dmg)
 
-</div>
+- [Apache 2.0-licens](LICENSE)
+- [Vad är MCP?](https://modelcontextprotocol.io)
+- [Staten.ai är en fork av Fleur](https://www.fleurmcp.com/)
 
+---
 
-[![Staten Logo](public/hero-asset.png)](https://statenmcp.com)
+## Innehåll
 
-Staten is a desktop application that serves as an app marketplace for MCPs. It allows you to discover, install, and manage apps that extend the functionality of Claude Desktop and Cursor.
+1. [Varför Staten.ai?](#varför-statenai)
+2. [Funktioner](#funktioner)
+3. [Kom igång](#kom-igång)
+4. [Installation](#installation)
+5. [Använda MCP-servrar](#använda-mcp-servrar)
+6. [Bidra med en egen MCP-server](#bidra-med-en-egen-mcp-server)
+7. [Utveckling](#utveckling)
+8. [Arkitektur](#arkitektur)
+9. [Roadmap](#roadmap)
+10. [Licens](#licens)
 
-All without having to use a command line. Staten is made for non-technical users in mind, but is open-source and extensible so developers can make it their own.
+---
 
-[📺 Demo video](https://x.com/0xferruccio/status/1898429209388675554)
+## Varför Staten.ai?
 
-## Getting Started
+Sverige ligger i framkant när det gäller öppna data – från rikstäckande ekonomisk statistik hos Riksbanken till kommunala nyckeltal från Kolada.
 
-To install Staten you can either download the [latest release](https://github.com/statenistes/staten/releases/latest/download/Staten.dmg) or open the terminal and run the following command:
+Staten.ai visar hur AI-modeller enkelt kan kopplas till dessa datakällor med hjälp av Model Context Protocol (MCP):
+
+- **Medborgare och journalister** kan ställa frågor och få svar baserade på officiell statistik.
+- **Tjänstepersoner** kan automatisera och effektivisera arbetsflöden inom beslutsstödsystem.
+- **Utvecklare** får en tydlig mall för att bygga MCP-servrar baserade på offentliga API:er.
+
+Tänk på Staten.ai som en öppen ”App Store” för dataplug-ins till Claude Desktop och andra MCP-klienter – helt anpassad för svenska förhållanden.
+
+---
+
+## Funktioner
+
+- **Marknadsplats för appar**: Hitta, installera och hantera MCP-appar för svenska datakällor.
+- **Fokus på svenska datakällor**: SwemoMCP (Riksbanken) och KoladaMCP ingår redan från start.
+- **Automatiska uppdateringar**: Staten håller både appar och sig själv uppdaterade.
+- **Ingen terminal krävs**: Enkel installation och användning, byggd med Rust och Tauri (storlek under 20 MB).
+- **Öppen källkod**: Apache 2.0-licens, redo för community-utveckling.
+
+---
+
+## Installation
+
+- [Ladda ned senaste macOS-version (.dmg)](https://github.com/aerugo/staten.ai/releases/latest/download/Staten.dmg)
+
+---
+
+## Använda MCP-servrar
+
+| Server | Datakälla | Exempel på frågor |
+|--------|-----------|--------------------|
+| **SwemoMCP** | Riksbankens API (BNP, KPI, ränta m.m.) | ”Hur har Riksbankens BNP-prognoser förändrats sedan 2020?” |
+| **KoladaMCP** | Kolada (kommunala nyckeltal och statistik) | ”Jämför skolresultat mellan Malmö och Lund 2019–2024.” |
+
+### Vill du lägga till fler servrar?
+
+Du kan enkelt bidra med nya MCP-servrar via [app-registret](https://github.com/aerugo/staten.ai-app-registry).
+
+---
+
+## Bidra med en egen MCP-server
+
+Har du ett API från offentlig sektor eller civilsamhället? Gör det enkelt tillgängligt genom att skapa en MCP-server:
+
+1. Läs [introduktionen till MCP](https://modelcontextprotocol.io/introduction).
+2. Använd befintliga exempel (t.ex. SwemoMCP eller KoladaMCP) som utgångspunkt.
+3. Publicera din server kostnadsfritt som öppen källkod på GitHub.
+4. Lägg till metadata om din server i `apps.json` och skicka en pull request.
+
+---
+
+## Utveckling
+
+**Förutsättningar**:
+
+- Node.js ≥ 18 och Bun
+- Rust (för Tauri)
+- macOS ≥ 13 (för native builds)
 
 ```bash
-curl -fsSL staten.sh | sh
+git clone https://github.com/statenistes/staten.git
+cd staten
+bun install
+bun tauri dev
 ```
 
-## Features
-
-- **App Discovery**: Browse and search for apps in the Staten marketplace
-- **Lightweight and fast**: Staten is built with Rust and Bun, making it lightweight and fast (it's less than 20MB)
-- **App Installation**: Easily install apps with a single click
-- **App Management**: View installed apps and their status for each client (Claude Desktop and Cursor are supported)
-- **Automatic Updates**: Stay up-to-date with the latest app versions
-
-
-## Submitting your MCP as an App
-
-To submit your app to the Staten marketplace, follow these steps:
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/statenistes/app-registry.git
-   cd app-registry
-   ```
-
-2. Add your app to the `apps.json` file.
-
-3. Submit a pull request to the [app-registry repository](https://github.com/statenistes/app-registry).
-
-
-## Development
-
-### Prerequisites
-
-- [Node.js](https://nodejs.org/) (v18 or higher)
-- [Bun](https://bun.sh/) package manager
-- [Rust](https://www.rust-lang.org/tools/install) (for Tauri)
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/statenistes/staten.git
-   cd staten
-   ```
-
-2. Install dependencies:
-   ```bash
-   bun install
-   ```
-
-3. Run the development version:
-   ```bash
-   bun tauri dev
-   ```
-
-### Building for Production
-
-To build the application for production:
-
-```bash
-bun tauri build
-```
-
-## App Registry
-
-Staten uses a centralized app registry to manage available apps. The registry is maintained at [github.com/statenistes/app-registry](https://github.com/statenistes/app-registry).
-
-### Adding a New App
-
-To add a new app to the registry, submit a pull request to the [app-registry repository](https://github.com/statenistes/app-registry) with your app's metadata.
-
-## Development
-
-### Project Structure
-
-- `src/` - React/TypeScript frontend code
-- `src-tauri/` - Rust backend code
-- `public/` - Static assets
-
-### Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
-
-### Running Tests
+**Kör tester**:
 
 ```bash
 cd src-tauri
 cargo test
 ```
 
-## Contributing
+---
 
-All contributions are welcome!
+## Arkitektur
 
-- `staten`: The main repository containing the Staten app. It's built with Tauri, React and Typescript. In the `src-tauri` folder, you'll find the Rust code. And in the `src` folder, you'll find the React code for the UI.
+Staten.ai består av två delar:
 
-- [`app-registry`](https://github.com/statenistes/app-registry): is the repository that contains the list of all MCPs
+- **Frontend** (React och Bun): Visar appar från ett centralt app-register via REST-API.
+- **Backend** (Rust/Tauri): Hanterar lokala MCP-serverprocesser och kommunicerar med MCP-klienter som Claude Desktop.
 
-## License
+---
 
-This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+## Roadmap
+
+Planerade funktioner och förbättringar:
+
+- [ ] Windows-stöd
+- [ ] Fler klienter
+- [ ] Inbyggd key-value store i Staten-backend för cachning av API-svar från MCP-servrar
+
+[Följ och bidra till utvecklingen på GitHub](https://github.com/aerugo/staten.ai/issues).
+
+---
+
+## Licens
+
+Staten.ai är licensierad under **Apache License 2.0**.
+
+Projektet är en fork av [Fleur](https://www.fleurmcp.com/) men saknar formell koppling till Fleur eller dess skapare. Alla varumärken tillhör respektive ägare.
