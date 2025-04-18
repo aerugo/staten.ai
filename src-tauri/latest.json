@@ -1,11 +1,11 @@
 {
-  "version": "0.2.18",
-  "notes": "See the assets to download this version and install.",
-  "pub_date": "2025-03-23T18:39:17Z",
-  "platforms": {
-    "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTQ3N6ZzZhc3lGWDAyaWh6QU1NZUFNYkc1aTVwcFJvNkhSZnFpRHMrbHl6cVhPWElka2paM1FuVFNuZ1BacDBISXBha25aSXUrWjNYMHEzc0NPRVdORVdKeFErUjUyaXdvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzQyNzU1MTU3CWZpbGU6RmxldXIuYXBwLnRhci5negp5WWgwaWdOSTY4THk0MjkxRHl6aVp6ZHcrOXJSL3RjR2U0Z2o4QlNsU3NidUx1aDVDQ1pDNnE0djhhbGZ6Y1hSbEdVaGgweFhOc2R0b01OclYvM2pEdz09Cg==",
-      "url": "https://github.com/statenistes/staten/releases/download/v0.2.18/Staten.app.tar.gz"
+    "version": "0.2.2",
+    "notes": "See the assets to download this version and install.",
+    "pub_date": "2025-04-18T16:47:46Z",
+    "platforms": {
+        "darwin-aarch64": {
+            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRa2tYMFM4QmVmaDh0VWo3dzR1MjZMbDZTVVRPQndDWUJOTW91RHU0bzg2MUpZbUY3NWJqNGRTb1NHUVNmSG9PN05uQnJCZ2lkV25jczBkRGZVWlNYRjh6UHNmQ0ROUFE0PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzQ0OTk0ODY2CWZpbGU6U3RhdGVuLmFwcC50YXIuZ3oKTGFKckg2M2c5bXQ1VmRmakgvSFhqanJ1UUR3WFJqZmp0VzFqSDQ2NkxDYjYzZy9ac3ZndjN3ditJWlhwWjdpWGp3UTBkN25seHMzVzV1K2Y0d2RyQ1E9PQo=",
+            "url": "https://github.com/aerugo/staten.ai/releases/download/v0.2.2/Staten.app.tar.gz"
+        }
     }
-  }
 }

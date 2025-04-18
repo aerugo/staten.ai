@@ -1,6 +1,6 @@
 [package]
 name = "staten"
-version = "0.2.18"
+version = "0.2.2"
 description = "A GUI to manage your MCPs"
 authors = ["you"]
 edition = "2021"

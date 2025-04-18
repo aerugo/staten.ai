@@ -1,7 +1,7 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "Staten",
-  "version": "0.2.18",
+  "version": "0.2.2",
   "identifier": "com.staten.app",
   "build": {
     "beforeDevCommand": "bun run dev",
@@ -50,9 +50,9 @@
     "updater": {
       "active": true,
       "dialog": true,
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDVGODVDQzZBM0EzOEIzODIKUldTQ3N6ZzZhc3lGWHcydHl6L3Z3ejVya29NYUpRNEJRZmRRb0lzWW4xV25vdTQrSXpBdzR0Z1kK",
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDg3OUYxN0YwMTI3RDkxMjQKUldRa2tYMFM4QmVmaDQrWHBxN3FEZWZHWGhENlNmRFhBZjBWSVEva3ovWUUwdk1ic0w3OE5PcXUK",
       "endpoints": [
-        "https://github.com/statenistes/staten/releases/latest/download/latest.json"
+        "https://github.com/aerugo/staten.ai/releases/latest/download/latest.json"
       ]
     }
   }
