@@ -9,39 +9,39 @@ import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 
 export function OnboardingSettings() {
-  const [isFleurEnabled, setIsFleurEnabled] = useState(false);
-  const [isFleurToggling, setIsFleurToggling] = useState(false);
+  const [isStatenEnabled, setIsStatenEnabled] = useState(false);
+  const [isStatenToggling, setIsStatenToggling] = useState(false);
   const [isResetting, setIsResetting] = useState(false);
   const { currentClient } = useStore(appStore, (state) => ({
     currentClient: state.currentClient,
   }));
 
   useEffect(() => {
-    checkFleurStatus();
+    checkStatenStatus();
   }, []);
 
-  const checkFleurStatus = async () => {
+  const checkStatenStatus = async () => {
     try {
       const statuses = await invoke<{ installed: Record<string, boolean> }>(
         "get_app_statuses"
       );
-      setIsFleurEnabled(!!statuses.installed.fleur);
+      setIsStatenEnabled(!!statuses.installed.staten);
     } catch (error) {
-      console.error("Failed to check Fleur status:", error);
+      console.error("Failed to check Staten status:", error);
     }
   };
 
-  const toggleFleur = async (enabled: boolean) => {
-    setIsFleurToggling(true);
+  const toggleStaten = async (enabled: boolean) => {
+    setIsStatenToggling(true);
     try {
       if (enabled) {
-        await invoke("install_fleur_mcp", { client: currentClient });
+        await invoke("install_staten_mcp", { client: currentClient });
         toast.success("Staten onboarding enabled");
       } else {
-        await invoke("uninstall_fleur_mcp", { client: currentClient });
+        await invoke("uninstall_staten_mcp", { client: currentClient });
         toast.success("Staten onboarding disabled");
       }
-      setIsFleurEnabled(enabled);
+      setIsStatenEnabled(enabled);
     } catch (error) {
       console.error(
         `Failed to ${enabled ? "install" : "uninstall"} Staten MCP:`,
@@ -54,7 +54,7 @@ export function OnboardingSettings() {
         }
       );
     } finally {
-      setIsFleurToggling(false);
+      setIsStatenToggling(false);
     }
   };
 
@@ -85,9 +85,9 @@ export function OnboardingSettings() {
           </p>
         </div>
         <Switch
-          checked={isFleurEnabled}
-          disabled={isFleurToggling}
-          onCheckedChange={toggleFleur}
+          checked={isStatenEnabled}
+          disabled={isStatenToggling}
+          onCheckedChange={toggleStaten}
         />
       </div>
       <Separator />

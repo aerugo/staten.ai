@@ -14,18 +14,18 @@ fn setup_logger() -> Result<(), Box<dyn std::error::Error>> {
     #[cfg(target_os = "macos")]
     let log_dir = {
         let home = dirs::home_dir().ok_or("Could not find home directory")?;
-        home.join("Library/Logs/Fleur")
+        home.join("Library/Logs/Staten")
     };
 
     #[cfg(target_os = "windows")]
     let log_dir = {
         let local_app_data =
             dirs::data_local_dir().ok_or("Could not find AppData\\Local directory")?;
-        local_app_data.join("Fleur").join("Logs")
+        local_app_data.join("Staten").join("Logs")
     };
 
     fs::create_dir_all(&log_dir)?;
-    let log_file = log_dir.join("fleur.log");
+    let log_file = log_dir.join("staten.log");
 
     let config = ConfigBuilder::new()
         .set_time_format_custom(format_description!(
@@ -121,14 +121,14 @@ fn open_logs_folder() -> Result<(), String> {
         #[cfg(target_os = "macos")]
         {
             let home = dirs::home_dir().ok_or("Could not find home directory")?;
-            home.join("Library/Logs/Fleur")
+            home.join("Library/Logs/Staten")
         }
 
         #[cfg(target_os = "windows")]
         {
             let local_app_data =
                 dirs::data_local_dir().ok_or("Could not find AppData\\Local directory")?;
-            local_app_data.join("Fleur").join("Logs")
+            local_app_data.join("Staten").join("Logs")
         }
     };
 
@@ -185,8 +185,8 @@ pub fn run() {
             app::get_app_env,
             app::get_app_registry,
             app::restart_client_app,
-            app::install_fleur_mcp,
-            app::uninstall_fleur_mcp,
+            app::install_staten_mcp,
+            app::uninstall_staten_mcp,
             app::check_onboarding_completed,
             app::reset_onboarding_completed,
             app::check_client_installed,

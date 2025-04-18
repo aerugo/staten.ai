@@ -52,7 +52,7 @@
       "dialog": true,
       "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDVGODVDQzZBM0EzOEIzODIKUldTQ3N6ZzZhc3lGWHcydHl6L3Z3ejVya29NYUpRNEJRZmRRb0lzWW4xV25vdTQrSXpBdzR0Z1kK",
       "endpoints": [
-        "https://github.com/fleuristes/fleur/releases/latest/download/latest.json"
+        "https://github.com/statenistes/staten/releases/latest/download/latest.json"
       ]
     }
   }

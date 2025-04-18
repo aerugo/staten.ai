@@ -53,7 +53,13 @@ function AppPage() {
         loadAppStatuses(currentClient);
       }
     }
-  }, [name, apps, appStatuses?.installed, appStatuses?.configured, currentClient]);
+  }, [
+    name,
+    apps,
+    appStatuses?.installed,
+    appStatuses?.configured,
+    currentClient,
+  ]);
 
   const handleInstallationChange = (isInstalled: boolean) => {
     if (app) {
@@ -82,7 +88,7 @@ function AppPage() {
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink asChild>
-                <Link to="/">Apps</Link>
+                <Link to="/">Appar</Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />

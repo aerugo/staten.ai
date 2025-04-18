@@ -33,14 +33,14 @@ pub fn is_test_mode() -> bool {
 
 pub fn get_npx_shim_path() -> std::path::PathBuf {
     if is_test_mode() {
-        return std::path::PathBuf::from("/test/.local/share/fleur/bin/npx-fleur");
+        return std::path::PathBuf::from("/test/.local/share/staten/bin/npx-staten");
     }
 
     #[cfg(target_os = "macos")]
     {
         let path = dirs::home_dir()
             .unwrap_or_default()
-            .join(".local/share/fleur/bin/npx-fleur");
+            .join(".local/share/staten/bin/npx-staten");
 
         return path;
     }
@@ -49,16 +49,16 @@ pub fn get_npx_shim_path() -> std::path::PathBuf {
     {
         let local_path = dirs::data_local_dir()
             .unwrap_or_default()
-            .join("fleur")
+            .join("staten")
             .join("bin")
-            .join("npx-fleur.cmd");
+            .join("npx-staten.cmd");
 
         if local_path.exists() {
             return local_path;
         }
 
         if let Ok(output) = Command::new("where")
-            .arg("npx-fleur.cmd")
+            .arg("npx-staten.cmd")
             .creation_flags(CREATE_NO_WINDOW)
             .output()
         {
@@ -67,7 +67,7 @@ pub fn get_npx_shim_path() -> std::path::PathBuf {
                 if let Some(path) = paths.lines().next() {
                     let path = path.trim();
                     if !path.is_empty() {
-                        debug!("Found npx-fleur in PATH at {}", path);
+                        debug!("Found npx-staten in PATH at {}", path);
                         return std::path::PathBuf::from(path);
                     }
                 }
@@ -347,7 +347,7 @@ pub fn get_nvm_node_paths() -> Result<(String, String), String> {
 pub fn ensure_npx_shim() -> Result<String, String> {
     if is_test_mode() {
         debug!("Using test mode path for npx shim");
-        return Ok("/test/.local/share/fleur/bin/npx-fleur".to_string());
+        return Ok("/test/.local/share/staten/bin/npx-staten".to_string());
     }
 
     let shim_path = get_npx_shim_path();
@@ -371,7 +371,7 @@ pub fn ensure_npx_shim() -> Result<String, String> {
 
         let shim_content = format!(
             r#"#!/bin/sh
-# NPX shim for Fleur
+# NPX shim for Staten
 
 NODE="{}"
 NPX="{}"
@@ -409,7 +409,7 @@ exec "$NPX" "$@"
 
                 let shim_content = format!(
                     r#"@echo off
-:: NPX shim for Fleur on Windows
+:: NPX shim for Staten on Windows
 
 set NODE_PATH={}
 set NODE={}
@@ -769,7 +769,7 @@ fn install_nvm() -> Result<(), String> {
     {
         info!("Installing nvm for Windows...");
 
-        let temp_dir = std::env::temp_dir().join("fleur_nvm_install");
+        let temp_dir = std::env::temp_dir().join("staten_nvm_install");
         let _ = std::fs::create_dir_all(&temp_dir);
         let installer_path = temp_dir.join("nvm-setup.exe");
 

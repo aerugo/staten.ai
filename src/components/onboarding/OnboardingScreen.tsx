@@ -126,7 +126,7 @@ export function OnboardingScreen({
   const onDropSuccess = () => {
     setCurrentStep(currentStep + 1);
 
-    invoke("install_fleur_mcp", { client: currentClient })
+    invoke("install_staten_mcp", { client: currentClient })
       .then(() => {
         console.log("Successfully installed staten-mcp");
       })

@@ -98,7 +98,7 @@ fn fetch_app_registry() -> Result<Value, String> {
 
     // Fetch the registry from GitHub
     let registry_url =
-        "https://raw.githubusercontent.com/fleuristes/app-registry/refs/heads/main/apps.json";
+        "https://raw.githubusercontent.com/aerugo/staten.ai-app-registry/refs/heads/main/apps.json";
     info!("Fetching app registry from {}", registry_url);
     let response = get(registry_url).map_err(|e| {
         error!("Failed to fetch app registry: {}", e);
@@ -188,7 +188,7 @@ pub fn get_app_configs() -> Result<Vec<(String, AppConfig)>, String> {
     let (npx_shim, uvx_path) = if crate::environment::is_test_mode() {
         debug!("Using test paths for npx_shim and uvx_path");
         (
-            "/test/.local/share/fleur/bin/npx-fleur".to_string(),
+            "/test/.local/share/staten/bin/npx-staten".to_string(),
             "/test/.local/bin/uvx".to_string(),
         )
     } else {
@@ -755,8 +755,8 @@ pub fn refresh_app_registry() -> Result<Value, String> {
 }
 
 #[tauri::command]
-pub fn install_fleur_mcp(client: &str) -> Result<String, String> {
-    info!("Installing fleur-mcp for client: {:?}...", client);
+pub fn install_staten_mcp(client: &str) -> Result<String, String> {
+    info!("Installing staten-mcp for client: {:?}...", client);
 
     // Convert string to ClientType if provided
     let client_type =
@@ -771,18 +771,18 @@ pub fn install_fleur_mcp(client: &str) -> Result<String, String> {
     {
         let app_config = json!({
             "command": uvx_path,
-            "args": ["mcp-fleur"]
+            "args": ["mcp-staten"]
         });
 
-        debug!("Adding config for fleur: {:?}", app_config);
-        mcp_servers.insert("fleur".to_string(), app_config);
+        debug!("Adding config for staten: {:?}", app_config);
+        mcp_servers.insert("staten".to_string(), app_config);
         save_config(&config_json, &client_type)?;
 
         info!(
-            "Successfully installed fleur-mcp for client: {}",
+            "Successfully installed staten-mcp for client: {}",
             client_type.as_str()
         );
-        Ok("Added fleur-mcp configuration".to_string())
+        Ok("Added staten-mcp configuration".to_string())
     } else {
         let err = "Failed to find mcpServers in config".to_string();
         error!("{}", err);
@@ -791,8 +791,8 @@ pub fn install_fleur_mcp(client: &str) -> Result<String, String> {
 }
 
 #[tauri::command]
-pub fn uninstall_fleur_mcp(client: &str) -> Result<String, String> {
-    info!("Uninstalling fleur-mcp for client: {:?}...", client);
+pub fn uninstall_staten_mcp(client: &str) -> Result<String, String> {
+    info!("Uninstalling staten-mcp for client: {:?}...", client);
 
     // Convert string to ClientType if provided
     let client_type =
@@ -804,13 +804,13 @@ pub fn uninstall_fleur_mcp(client: &str) -> Result<String, String> {
         .get_mut("mcpServers")
         .and_then(|v| v.as_object_mut())
     {
-        if let Some(_) = mcp_servers.remove("fleur") {
+        if let Some(_) = mcp_servers.remove("staten") {
             save_config(&config_json, &client_type)?;
-            info!("Successfully uninstalled fleur-mcp for client: {}", client);
-            Ok("Removed fleur-mcp configuration".to_string())
+            info!("Successfully uninstalled staten-mcp for client: {}", client);
+            Ok("Removed staten-mcp configuration".to_string())
         } else {
-            warn!("fleur-mcp configuration was not found");
-            Ok("fleur-mcp configuration was not found".to_string())
+            warn!("staten-mcp configuration was not found");
+            Ok("staten-mcp configuration was not found".to_string())
         }
     } else {
         let err = "Failed to find mcpServers in config".to_string();
@@ -827,10 +827,10 @@ pub fn check_onboarding_completed() -> Result<bool, String> {
     };
 
     #[cfg(target_os = "macos")]
-    let onboarding_file = home.join(".fleur/onboarding_completed");
+    let onboarding_file = home.join(".staten/onboarding_completed");
 
     #[cfg(target_os = "windows")]
-    let onboarding_file = home.join(".fleur").join("onboarding_completed");
+    let onboarding_file = home.join(".staten").join("onboarding_completed");
 
     debug!("Checking onboarding file at: {}", onboarding_file.display());
     Ok(onboarding_file.exists())
@@ -844,10 +844,10 @@ pub fn reset_onboarding_completed() -> Result<bool, String> {
     };
 
     #[cfg(target_os = "macos")]
-    let onboarding_file = home.join(".fleur/onboarding_completed");
+    let onboarding_file = home.join(".staten/onboarding_completed");
 
     #[cfg(target_os = "windows")]
-    let onboarding_file = home.join(".fleur").join("onboarding_completed");
+    let onboarding_file = home.join(".staten").join("onboarding_completed");
 
     debug!(
         "Resetting onboarding file at: {}",

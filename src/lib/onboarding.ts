@@ -1,5 +1,5 @@
 // Key used for storing onboarding state in local storage
-const ONBOARDING_COMPLETED_KEY = "fleur-onboarding-completed";
+const ONBOARDING_COMPLETED_KEY = "staten-onboarding-completed";
 
 /**
  * Check if the onboarding has been completed

@@ -1,35 +1,35 @@
 <div align="center">
-  <h1>Fleur</h1>
+  <h1>Staten</h1>
   <p>A desktop app marketplace for Claude Desktop</p>
 </div>
 
 <div align="center">
 
-[![License](https://img.shields.io/github/license/fleuristes/fleur?style=flat)](https://github.com/fleuristes/fleur/blob/main/LICENSE)
+[![License](https://img.shields.io/github/license/statenistes/staten?style=flat)](https://github.com/statenistes/staten/blob/main/LICENSE)
 
 </div>
 
 
-[![Fleur Logo](public/hero-asset.png)](https://fleurmcp.com)
+[![Staten Logo](public/hero-asset.png)](https://statenmcp.com)
 
-Fleur is a desktop application that serves as an app marketplace for MCPs. It allows you to discover, install, and manage apps that extend the functionality of Claude Desktop and Cursor.
+Staten is a desktop application that serves as an app marketplace for MCPs. It allows you to discover, install, and manage apps that extend the functionality of Claude Desktop and Cursor.
 
-All without having to use a command line. Fleur is made for non-technical users in mind, but is open-source and extensible so developers can make it their own.
+All without having to use a command line. Staten is made for non-technical users in mind, but is open-source and extensible so developers can make it their own.
 
 [📺 Demo video](https://x.com/0xferruccio/status/1898429209388675554)
 
 ## Getting Started
 
-To install Fleur you can either download the [latest release](https://github.com/fleuristes/fleur/releases/latest/download/Fleur.dmg) or open the terminal and run the following command:
+To install Staten you can either download the [latest release](https://github.com/statenistes/staten/releases/latest/download/Staten.dmg) or open the terminal and run the following command:
 
 ```bash
-curl -fsSL fleur.sh | sh
+curl -fsSL staten.sh | sh
 ```
 
 ## Features
 
-- **App Discovery**: Browse and search for apps in the Fleur marketplace
-- **Lightweight and fast**: Fleur is built with Rust and Bun, making it lightweight and fast (it's less than 20MB)
+- **App Discovery**: Browse and search for apps in the Staten marketplace
+- **Lightweight and fast**: Staten is built with Rust and Bun, making it lightweight and fast (it's less than 20MB)
 - **App Installation**: Easily install apps with a single click
 - **App Management**: View installed apps and their status for each client (Claude Desktop and Cursor are supported)
 - **Automatic Updates**: Stay up-to-date with the latest app versions
@@ -37,17 +37,17 @@ curl -fsSL fleur.sh | sh
 
 ## Submitting your MCP as an App
 
-To submit your app to the Fleur marketplace, follow these steps:
+To submit your app to the Staten marketplace, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/fleuristes/app-registry.git
+   git clone https://github.com/statenistes/app-registry.git
    cd app-registry
    ```
 
 2. Add your app to the `apps.json` file.
 
-3. Submit a pull request to the [app-registry repository](https://github.com/fleuristes/app-registry).
+3. Submit a pull request to the [app-registry repository](https://github.com/statenistes/app-registry).
 
 
 ## Development
@@ -62,8 +62,8 @@ To submit your app to the Fleur marketplace, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/fleuristes/fleur.git
-   cd fleur
+   git clone https://github.com/statenistes/staten.git
+   cd staten
    ```
 
 2. Install dependencies:
@@ -86,11 +86,11 @@ bun tauri build
 
 ## App Registry
 
-Fleur uses a centralized app registry to manage available apps. The registry is maintained at [github.com/fleuristes/app-registry](https://github.com/fleuristes/app-registry).
+Staten uses a centralized app registry to manage available apps. The registry is maintained at [github.com/statenistes/app-registry](https://github.com/statenistes/app-registry).
 
 ### Adding a New App
 
-To add a new app to the registry, submit a pull request to the [app-registry repository](https://github.com/fleuristes/app-registry) with your app's metadata.
+To add a new app to the registry, submit a pull request to the [app-registry repository](https://github.com/statenistes/app-registry) with your app's metadata.
 
 ## Development
 
@@ -115,9 +115,9 @@ cargo test
 
 All contributions are welcome!
 
-- `fleur`: The main repository containing the Fleur app. It's built with Tauri, React and Typescript. In the `src-tauri` folder, you'll find the Rust code. And in the `src` folder, you'll find the React code for the UI.
+- `staten`: The main repository containing the Staten app. It's built with Tauri, React and Typescript. In the `src-tauri` folder, you'll find the Rust code. And in the `src` folder, you'll find the React code for the UI.
 
-- [`app-registry`](https://github.com/fleuristes/app-registry): is the repository that contains the list of all MCPs
+- [`app-registry`](https://github.com/statenistes/app-registry): is the repository that contains the list of all MCPs
 
 ## License
 

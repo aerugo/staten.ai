@@ -28,64 +28,10 @@ export function Settings() {
   const { theme, setTheme } = useTheme();
   const [version, setVersion] = useState<string>("");
   const [isRefreshing, setIsRefreshing] = useState(false);
-  const [isTelemetryEnabled, setIsTelemetryEnabled] = useState(true);
 
   useEffect(() => {
     getVersion().then(setVersion);
-    checkTelemetryStatus();
   }, []);
-
-  const checkTelemetryStatus = async () => {
-    try {
-      // Get telemetry status from localStorage
-      const telemetryDisabled =
-        localStorage.getItem("telemetry-disabled") === "true";
-      setIsTelemetryEnabled(!telemetryDisabled);
-    } catch (error) {
-      console.error("Failed to check telemetry status:", error);
-    }
-  };
-
-  const toggleTelemetry = async (enabled: boolean) => {
-    try {
-      // Store telemetry preference in localStorage
-      localStorage.setItem("telemetry-disabled", (!enabled).toString());
-      setIsTelemetryEnabled(enabled);
-
-      // Update window.analytics settings using Segment-compatible approach
-      if (window.analytics) {
-        if (!enabled) {
-          // Disable tracking
-          window.analytics.track = function () {};
-          window.analytics.page = function () {};
-          window.analytics.identify = function () {};
-          window.analytics.group = function () {};
-
-          // Set anonymousId to null
-          window.analytics.user = function () {
-            return {
-              anonymousId: function () {
-                return null;
-              },
-            };
-          };
-        } else {
-          // Reload the page to re-initialize analytics
-          window.location.reload();
-        }
-      }
-
-      toast.success(`Anonymous telemetry ${enabled ? "enabled" : "disabled"}`);
-    } catch (error) {
-      console.error(
-        `Failed to ${enabled ? "enable" : "disable"} telemetry:`,
-        error
-      );
-      toast.error(`Failed to ${enabled ? "enable" : "disable"} telemetry`, {
-        description: String(error),
-      });
-    }
-  };
 
   const updateTheme = async (theme: string) => {
     setTheme(theme);
@@ -200,19 +146,6 @@ export function Settings() {
           </div>
           <Separator />
           <OnboardingSettings />
-          <Separator />
-          <div className="flex items-center justify-between">
-            <div className="flex flex-col gap-1">
-              <label className="text-sm font-medium">Telemetry</label>
-              <p className="text-sm text-muted-foreground">
-                Allow anonymous usage data collection
-              </p>
-            </div>
-            <Switch
-              checked={isTelemetryEnabled}
-              onCheckedChange={toggleTelemetry}
-            />
-          </div>
           <Separator />
           <div className="flex items-center justify-between">
             <div className="flex flex-col gap-1">

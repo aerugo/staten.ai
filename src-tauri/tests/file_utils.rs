@@ -1,6 +1,6 @@
 mod common;
 
-use fleur_lib::file_utils::{ensure_config_file, ensure_mcp_servers};
+use staten_lib::file_utils::{ensure_config_file, ensure_mcp_servers};
 use serde_json::{json, Value};
 use std::path::PathBuf;
 use tempfile::TempDir;

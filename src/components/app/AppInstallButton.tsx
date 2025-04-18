@@ -1,16 +1,16 @@
-import { toast } from 'sonner';
-import { useEffect, useState } from 'react';
-import { invoke } from '@tauri-apps/api/core';
-import { useStore } from '@tanstack/react-store';
-import { useNavigate } from '@tanstack/react-router';
-import { AppInstallButtonProps } from '@/types/components/app';
-import { ClientType } from '@/types/clients';
-import { appStore } from '@/store/app';
-import { cn } from '@/lib/utils';
-import { hasConfig } from '@/lib/hasConfig';
-import { Button } from '@/components/ui/button';
-import { ConfigurationMenu } from './configuration';
-import { Dialog, DialogContent, DialogTrigger } from '../ui/dialog';
+import { toast } from "sonner";
+import { useEffect, useState } from "react";
+import { invoke } from "@tauri-apps/api/core";
+import { useStore } from "@tanstack/react-store";
+import { useNavigate } from "@tanstack/react-router";
+import { AppInstallButtonProps } from "@/types/components/app";
+import { ClientType } from "@/types/clients";
+import { appStore } from "@/store/app";
+import { cn } from "@/lib/utils";
+import { hasConfig } from "@/lib/hasConfig";
+import { Button } from "@/components/ui/button";
+import { ConfigurationMenu } from "./configuration";
+import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
 
 export function AppInstallButton({
   app,
@@ -70,7 +70,7 @@ export function AppInstallButton({
           client: currentClient,
         });
 
-        window.analytics.track('app_installed', {
+        window.analytics.track("app_installed", {
           app_name: app.name,
         });
         console.log(result);
@@ -82,13 +82,16 @@ export function AppInstallButton({
       });
       onInstallationChange(newIsInstalled);
 
-      const action = currentClient === ClientType.Claude ? {
-        label: `Relaunch Claude`,
-        onClick: async () => {
-          await invoke("restart_client_app", { client: currentClient });
-          toast.success(`${currentClient} app is restarting...`);
-        },
-      } : undefined;
+      const action =
+        currentClient === ClientType.Claude
+          ? {
+              label: `Relaunch Claude`,
+              onClick: async () => {
+                await invoke("restart_client_app", { client: currentClient });
+                toast.success(`${currentClient} app is restarting...`);
+              },
+            }
+          : undefined;
       toast.success(
         `${app.name} ${!newIsInstalled ? "uninstalled" : "installed"}`,
         {
@@ -145,7 +148,8 @@ export function AppInstallButton({
               className="transition-colors rounded-lg px-3 bg-transparent text-sand/20 dark:text-blue-400 border border-sand-100 hover:bg-transparent dark:hover:ring-blue-100 dark:active:ring-blue-100 dark:hover:bg-blue-400/20"
               onClick={() =>
                 navigate({ to: "/app/$name", params: { name: app.name } })
-              }>
+              }
+            >
               Configure
             </Button>
           </DialogTrigger>
@@ -176,12 +180,13 @@ export function AppInstallButton({
               try {
                 const result = await invoke("install", {
                   appName: app.name,
-                  envVars: app.setup && app.setup.length > 0 ? setupValues : null,
+                  envVars:
+                    app.setup && app.setup.length > 0 ? setupValues : null,
                   client: currentClient,
                 });
                 console.log(result);
 
-                window.analytics.track('app_installed', {
+                window.analytics.track("app_installed", {
                   app_name: app.name,
                 });
 
@@ -196,10 +201,15 @@ export function AppInstallButton({
                     label: `Relaunch ${currentClient}`,
                     onClick: async () => {
                       try {
-                        await invoke("restart_client_app", { client: currentClient });
+                        await invoke("restart_client_app", {
+                          client: currentClient,
+                        });
                         toast.success(`${currentClient} app is restarting...`);
                       } catch (error) {
-                        console.error(`Failed to restart ${currentClient} app:`, error);
+                        console.error(
+                          `Failed to restart ${currentClient} app:`,
+                          error
+                        );
                         toast.error(`Failed to restart ${currentClient} app`);
                       }
                     },
@@ -232,8 +242,9 @@ export function AppInstallButton({
         )}
         disabled={!isConfigured}
         onClick={handleGetClick}
-        variant="ghost">
-        {!isConfigured ? "Coming soon" : isInstalled ? "Remove" : "Get"}
+        variant="ghost"
+      >
+        {!isConfigured ? "Kommer snart" : isInstalled ? "Ta bort" : "Hämta"}
       </Button>
     </div>
   );

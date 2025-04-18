@@ -1,7 +1,7 @@
 mod common;
 
 use env_logger;
-use fleur_lib::{
+use staten_lib::{
     app::{self, APP_REGISTRY_CACHE},
     clients::ClientType,
     environment,

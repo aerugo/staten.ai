@@ -1,14 +1,17 @@
-import { useEffect } from 'react';
-import { invoke } from '@tauri-apps/api/core';
-import { useStore } from '@tanstack/react-store';
-import { useApps } from '@/appRegistry';
-import { AppListItem } from '@/components/app/AppListItem';
-import { Loader } from '@/components/ui/loader';
-import { appStore, updateAppInstallation } from '@/store/app';
+import { useEffect } from "react";
+import { invoke } from "@tauri-apps/api/core";
+import { useStore } from "@tanstack/react-store";
+import { useApps } from "@/appRegistry";
+import { AppListItem } from "@/components/app/AppListItem";
+import { Loader } from "@/components/ui/loader";
+import { appStore, updateAppInstallation } from "@/store/app";
 
 export function Home() {
   const appStatuses = useStore(appStore, (state) => state.appStatuses);
-  const isLoadingStatuses = useStore(appStore, (state) => state.isLoadingStatuses);
+  const isLoadingStatuses = useStore(
+    appStore,
+    (state) => state.isLoadingStatuses
+  );
   const { apps, isLoading: isLoadingApps } = useApps();
 
   useEffect(() => {
@@ -41,7 +44,9 @@ export function Home() {
   return (
     <section className="flex flex-col gap-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100">Apps</h2>
+        <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100">
+          Appar
+        </h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-row-8 gap-x-5">
         {apps.map((app) => (

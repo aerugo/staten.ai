@@ -6,7 +6,6 @@ import { appStore, completeOnboarding, updateCurrentClient } from "@/store/app";
 import { DragRegion } from "@/components/ui/drag-region";
 import { OnboardingScreen } from "@/components/onboarding/OnboardingScreen";
 import { Settings } from "@/components/app/settings";
-import { Feedback } from "@/components/app/feedback";
 import { ClientSelector } from "@/components/app/ClientSelector";
 
 export const Route = createRootRoute({
@@ -35,10 +34,9 @@ export const Route = createRootRoute({
                       onClientChange={updateCurrentClient}
                     />
                     <div className="absolute left-1/2 -translate-x-1/2 flex items-center">
-                      <img src="/logo.png" alt="Fleur" className="w-10 h-10" />
+                      <img src="/logo.png" alt="Staten" className="w-10 h-10" />
                     </div>
                     <div className="flex items-center gap-3">
-                      <Feedback />
                       <Settings />
                     </div>
                   </div>
