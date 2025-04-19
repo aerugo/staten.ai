@@ -1,5 +1,7 @@
 # Staten.ai
 
+*[Readme in English](https://github.com/aerugo/staten.ai/blob/main/README-EN.md)*
+
 En öppen marknadsplats för Model Context Protocol (MCP)-appar – med fokus på svenska öppna data från offentlig sektor och civilsamhälle.
 
 [Ladda ned senaste macOS-versionen ⇩](https://github.com/aerugo/staten/releases/latest/download/Staten.dmg)
