@@ -1,7 +1,7 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "Staten",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "identifier": "com.staten.app",
   "build": {
     "beforeDevCommand": "bun run dev",
@@ -42,7 +42,7 @@
     "macOS": {
       "frameworks": [],
       "minimumSystemVersion": "10.13",
-      "signingIdentity": null,
+      "signingIdentity": "Developer ID Application: SenseStack AB (9Y4MCX98KS)",
       "entitlements": "macos/entitlements.plist"
     }
   },
@@ -50,7 +50,7 @@
     "updater": {
       "active": true,
       "dialog": true,
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDg3OUYxN0YwMTI3RDkxMjQKUldRa2tYMFM4QmVmaDQrWHBxN3FEZWZHWGhENlNmRFhBZjBWSVEva3ovWUUwdk1ic0w3OE5PcXUK",
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEE2REY3MzRGNzVGRTE3M0QKUldROUYvNTFUM1BmcGpxcytYSVBNV0E1ZFplTHZwRHBJeW1JMmo0aWRRRi9YWHJEKzVoTWxXeEwK",
       "endpoints": [
         "https://github.com/aerugo/staten.ai/releases/latest/download/latest.json"
       ]
