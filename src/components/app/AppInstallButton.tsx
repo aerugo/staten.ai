@@ -70,9 +70,6 @@ export function AppInstallButton({
           client: currentClient,
         });
 
-        window.analytics.track("app_installed", {
-          app_name: app.name,
-        });
         console.log(result);
       }
 
@@ -185,10 +182,6 @@ export function AppInstallButton({
                   client: currentClient,
                 });
                 console.log(result);
-
-                window.analytics.track("app_installed", {
-                  app_name: app.name,
-                });
 
                 const newIsInstalled = await invoke<boolean>("is_installed", {
                   appName: app.name,
