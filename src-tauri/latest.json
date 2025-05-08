@@ -1,10 +1,10 @@
 {
     "version": "0.2.3",
     "notes": "See the assets to download this version and install.",
-    "pub_date": "2025-05-08T21:25:23Z",
+    "pub_date": "2025-05-08T21:30:22Z",
     "platforms": {
         "darwin-aarch64": {
-            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVROUYvNTFUM1BmcHRwcS8yTWpUUEdiZUFRd2xPdkMxOXl3ZGd4bnRSTTlFQnJUOUFrcHN0UGtYM3JQMnRIeEJWcGpva0pQQndVeW8wVzJhTUVmS2E4VGsvV2hZNDNHT0FvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzQ2NzM5NTIzCWZpbGU6U3RhdGVuLmFwcC50YXIuZ3oKcTFNMmMvVkZtNnd1bGJqSnJVeUgyOGQ4aDJOU254M3NlNkZPZEloUG9TeUxpWlVhOWVwTFppSlRSSTJtU0M5RkFjbStPYXhzYmNBWUREQ1FBcDJ1Q2c9PQo=",
+            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVROUYvNTFUM1BmcGlvaXFLZ3QzYWJWYldrQVBvTEh0VDIvR3g3OWhiMVhyd0J2eHFmV0Nidmwway9uWXNWR3pPbzhDK015VHlhUENkK1NVYi9aQitDN2QyMmI3V2VRclFFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzQ2NzM5ODIyCWZpbGU6U3RhdGVuLmFwcC50YXIuZ3oKdmluaWYxQWlpd0VPT2RZZTBMSkhjU3YzK29qM3daMkphTlgybkZnWGZqZXNxWFFZc1VkbEpHMXd1YTJHMXpFYTllNmRRZlRveEV1ZWw3a2w0L0pxQ2c9PQo=",
             "url": "https://github.com/aerugo/staten.ai/releases/download/v0.2.3/Staten.app.tar.gz"
         }
     }
