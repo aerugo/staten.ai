@@ -21,7 +21,7 @@
     "@radix-ui/react-tabs": "^1.1.3",
     "@radix-ui/react-tooltip": "^1.1.8",
     "@tanstack/react-router": "^1.102.1",
-    "@tanstack/react-store": "^0.7.0",
+    "@tanstack/react-store": "^0.8.0",
     "@tauri-apps/api": "^2",
     "@tauri-apps/plugin-opener": "^2",
     "@tauri-apps/plugin-updater": "^2.5.1",
